@@ -103,48 +103,7 @@ python3 internet_monitor.py
 
 Stop with `Ctrl+C`.
 
-### Run 24/7 on macOS (launchd)
 
-Create `~/Library/LaunchAgents/com.user.internet-monitor.plist`:
-
-```xml
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
-<plist version="1.0">
-<dict>
-    <key>Label</key>
-    <string>com.user.internet-monitor</string>
-    <key>ProgramArguments</key>
-    <array>
-        <string>/path/to/internet_monitor/.venv/bin/python3</string>
-        <string>/path/to/internet_monitor/internet_monitor.py</string>
-    </array>
-    <key>WorkingDirectory</key>
-    <string>/path/to/internet_monitor</string>
-    <key>EnvironmentVariables</key>
-    <dict>
-        <key>S3_BUCKET</key>
-        <string>your-bucket-name</string>
-        <key>AWS_ACCESS_KEY_ID</key>
-        <string>your-access-key</string>
-        <key>AWS_SECRET_ACCESS_KEY</key>
-        <string>your-secret-key</string>
-        <key>AWS_REGION</key>
-        <string>us-east-1</string>
-    </dict>
-    <key>RunAtLoad</key>
-    <true/>
-    <key>KeepAlive</key>
-    <true/>
-</dict>
-</plist>
-```
-
-Load it:
-
-```bash
-launchctl load ~/Library/LaunchAgents/com.user.internet-monitor.plist
-```
 
 ## Project Files
 
